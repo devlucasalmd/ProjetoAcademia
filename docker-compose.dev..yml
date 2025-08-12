@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: academia-dev
+    env_file:
+      - .env.dev
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    ports:
+      - "${APP_PORT}:8080"
+    volumes:
+      - .:/app
+    command: mvn spring-boot:run
+
