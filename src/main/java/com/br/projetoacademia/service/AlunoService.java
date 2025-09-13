@@ -45,9 +45,9 @@ public class AlunoService {
 		
 			aluno.setNome(novoAluno.getNome());
 			aluno.setEmail(novoAluno.getEmail());
-			aluno.setPassword(novoAluno.getPassword());
+			aluno.setSenha(novoAluno.getSenha());
 			aluno.setCpf(novoAluno.getCpf());
-			aluno.setDataNasc(novoAluno.getDataNasc());
+			aluno.setDataNascimento(novoAluno.getDataNascimento());
 			aluno.setTelefone(novoAluno.getTelefone());
 			aluno.setAtivo(novoAluno.getAtivo());
 			
@@ -71,7 +71,7 @@ public class AlunoService {
                 aluno.getNome(),
                 aluno.getEmail(),
                 aluno.getCpf(),
-                aluno.getDataNasc(),
+                aluno.getDataNascimento(),
                 aluno.getTelefone(),
                 aluno.getAtivo()
         );
