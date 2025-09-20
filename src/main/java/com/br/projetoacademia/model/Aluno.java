@@ -20,6 +20,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -55,12 +56,12 @@ public class Aluno {
 	private String senha;
 	
 	@NotBlank
-	@CPF
+//	@CPF
 	@Column(nullable = false, unique = true, length = 14)
 	private String cpf;
 	
-	@NotBlank
-	@Column(name = "data_nascimento, nullable = false")
+	@NotNull
+	@Column(name = "data_nascimento", nullable = false)
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
 	
@@ -68,12 +69,12 @@ public class Aluno {
 	@Column(nullable = false, length = 20)
 	private String telefone;
 	
-	@NotBlank
+	@NotNull
 	private Boolean ativo;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 15)
+	@Column(columnDefinition = "genero_enum", nullable = false)
 	private Genero genero;
 	
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)

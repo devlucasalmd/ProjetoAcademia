@@ -1,4 +1,4 @@
-package com.br.projetoacademia.exception;
+	package com.br.projetoacademia.exception;
 
 public class AlunoJaInativoException extends RuntimeException{
     public AlunoJaInativoException(Long id) {

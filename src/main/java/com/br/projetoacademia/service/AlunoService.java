@@ -5,9 +5,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.br.projetoacademia.dto.AlunoDTO;
+import com.br.projetoacademia.dto.AlunoRequestDTO;
+import com.br.projetoacademia.dto.AlunoResponseDTO;
 import com.br.projetoacademia.exception.AlunoJaInativoException;
 import com.br.projetoacademia.exception.AlunoNaoEncontradoException;
+import com.br.projetoacademia.mapper.AlunoMapper;
 import com.br.projetoacademia.model.Aluno;
 import com.br.projetoacademia.repository.AlunoRepository;
 
@@ -15,48 +17,40 @@ import com.br.projetoacademia.repository.AlunoRepository;
 public class AlunoService {
 
 	private final AlunoRepository alunoRepository;
+	private final AlunoMapper alunoMapper;
 
-	public AlunoService(AlunoRepository alunoRepository) {		
+	public AlunoService(AlunoRepository alunoRepository, AlunoMapper alunoMapper) {		
 		this.alunoRepository = alunoRepository;
+		this.alunoMapper = alunoMapper ;
 	}
 	
-	public AlunoDTO criarAluno(Aluno aluno) {
+	public AlunoResponseDTO criarAluno(AlunoRequestDTO dto) {
+		Aluno aluno = alunoMapper.toEntity(dto);
 		aluno.setAtivo(true);
-		return toDTO(alunoRepository.save(aluno));
+		return alunoMapper.toResponseDTO(alunoRepository.save(aluno));
 	}
 	
-	public List<AlunoDTO> listarAlunos() { 
+	public List<AlunoResponseDTO> listarAlunos() { 
 		return alunoRepository.findAll()
 				.stream()
-				.map(this::toDTO)
+				.map(alunoMapper::toResponseDTO)
 				.collect(Collectors.toList()); 
 	}
 	
-	public AlunoDTO buscarPorId(Long id) { 
-		Aluno aluno =  alunoRepository.findById(id)
-				.orElseThrow(() -> new AlunoNaoEncontradoException(id));
-		
-		return toDTO(aluno); 					
+	public AlunoResponseDTO buscarPorId(Long id) { 
+		Aluno aluno =  buscarAlunoPorId(id);	
+		return alunoMapper.toResponseDTO(aluno); 					
 	}	
 	
-	public AlunoDTO atualizarAluno(Long id, Aluno novoAluno){
-		Aluno aluno = alunoRepository.findById(id)
-				.orElseThrow(() -> new AlunoNaoEncontradoException(id));
-		
-			aluno.setNome(novoAluno.getNome());
-			aluno.setEmail(novoAluno.getEmail());
-			aluno.setSenha(novoAluno.getSenha());
-			aluno.setCpf(novoAluno.getCpf());
-			aluno.setDataNascimento(novoAluno.getDataNascimento());
-			aluno.setTelefone(novoAluno.getTelefone());
-			aluno.setAtivo(novoAluno.getAtivo());
-			
-			return toDTO(alunoRepository.save(aluno));			
+	public AlunoResponseDTO atualizarAluno(Long id, AlunoRequestDTO novoAluno){
+		Aluno aluno = buscarAlunoPorId(id);		
+		alunoMapper.atualizarAluno(aluno, novoAluno);
+		return alunoMapper.toResponseDTO(alunoRepository.save(aluno));
 	}
 	
 	public void desativarAluno(Long id) {
-		Aluno aluno = alunoRepository.findById(id)
-				.orElseThrow(() -> new AlunoNaoEncontradoException(id));
+		Aluno aluno = buscarAlunoPorId(id);
+				
 		if(!aluno.getAtivo()) {
 			throw new AlunoJaInativoException(id);
 		}
@@ -65,15 +59,8 @@ public class AlunoService {
 		alunoRepository.save(aluno);		
 	}
 	
-	private AlunoDTO toDTO(Aluno aluno) {
-        return new AlunoDTO(
-                aluno.getId(),
-                aluno.getNome(),
-                aluno.getEmail(),
-                aluno.getCpf(),
-                aluno.getDataNascimento(),
-                aluno.getTelefone(),
-                aluno.getAtivo()
-        );
-    }
+	 private Aluno buscarAlunoPorId(Long id) {
+	        return alunoRepository.findById(id)
+	                .orElseThrow(() -> new AlunoNaoEncontradoException(id));
+	    }
 }

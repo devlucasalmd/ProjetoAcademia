@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,19 +34,19 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo_pagamento", nullable = false, length = 20)
     private TipoPagamento tipoPagamento;
 
-	@NotBlank
+	@NotNull
     @Column(name = "data_pagamento", nullable = false)
 	private LocalDate dataPagamento;
 	
-	@NotBlank
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status_pagamento", nullable = false, length = 20)
-	private Boolean statusPagamento;
+	private StatusPagamento statusPagamento;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matricula_id", nullable = false)

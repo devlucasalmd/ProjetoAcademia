@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,11 +39,11 @@ public class Plano {
 	@Column(name = "nome_plano", nullable = false, length = 50)
 	private String nomePlano;
 	
-	@NotBlank
+	@NotNull
     @Column(name = "valor_plano", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorPlano;
 	
-	@NotBlank
+	@NotNull
     @Column(name = "duracao_dias", nullable = false)
 	private Integer duracaoDias;
 	

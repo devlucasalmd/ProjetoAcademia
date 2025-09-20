@@ -34,11 +34,11 @@ public class Matricula {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	@Column(name = "data_inicio_matricula", nullable = false)
 	private LocalDate dataInicioMatricula;
 	
-	@NotBlank
+	@NotNull
 	@Column(name = "data_fim_matricula", nullable = false)
 	private LocalDate dataFimMatricula;
 	
@@ -50,7 +50,7 @@ public class Matricula {
 	@JoinColumn(name = "aluno_id", nullable = false)
 	private Aluno aluno;
 	
-	@NotBlank
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "plano_id", nullable = false)
 	private Plano plano;

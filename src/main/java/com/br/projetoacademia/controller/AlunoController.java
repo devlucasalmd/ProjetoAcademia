@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.projetoacademia.dto.AlunoDTO;
-import com.br.projetoacademia.model.Aluno;
+import com.br.projetoacademia.dto.AlunoRequestDTO;
+import com.br.projetoacademia.dto.AlunoResponseDTO;
 import com.br.projetoacademia.service.AlunoService;
 
 import jakarta.validation.Valid;
@@ -32,18 +32,28 @@ public class AlunoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public AlunoDTO createAluno(@Valid @RequestBody Aluno aluno) { return alunoService.criarAluno(aluno); }
+	public AlunoResponseDTO createAluno(@Valid @RequestBody AlunoRequestDTO alunoRequest) { 
+		return alunoService.criarAluno(alunoRequest); 
+	}
 	
 	@GetMapping
-	public List<AlunoDTO> readAluno(){ return alunoService.listarAlunos(); }
+	public List<AlunoResponseDTO> findAllAluno(){ 
+		return alunoService.listarAlunos(); 
+	}
 	
 	@GetMapping("/{id}")
-	public AlunoDTO readAlunoById(@PathVariable Long id) { return alunoService.buscarPorId(id);	}
+	public AlunoResponseDTO findByIdAluno(@PathVariable Long id) { 
+		return alunoService.buscarPorId(id);	
+	}
 	
 	@PutMapping("/{id}")
-	public AlunoDTO updateAluno(@PathVariable Long id, @Valid @RequestBody Aluno aluno){ return alunoService.atualizarAluno(id, aluno);	}
+	public AlunoResponseDTO updateAluno(@PathVariable Long id, @Valid @RequestBody AlunoRequestDTO alunoRequest){
+		return alunoService.atualizarAluno(id, alunoRequest);	
+	}
 		
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteAluno(@PathVariable Long id) { alunoService.desativarAluno(id); }
+	public void deactivateAluno(@PathVariable Long id) { 
+		alunoService.desativarAluno(id); 
+	}
 }
