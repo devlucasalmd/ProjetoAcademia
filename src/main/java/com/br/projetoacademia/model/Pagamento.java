@@ -34,6 +34,9 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull	
+    private Double valorPago;
+    
 	@NotNull
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo_pagamento", nullable = false, length = 20)

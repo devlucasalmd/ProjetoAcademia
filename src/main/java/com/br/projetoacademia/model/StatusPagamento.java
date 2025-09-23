@@ -1,5 +1,7 @@
 package com.br.projetoacademia.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum StatusPagamento {
 
     PENDENTE("Pendente"),
@@ -13,6 +15,7 @@ public enum StatusPagamento {
         this.descricao = descricao;
     }
 
+    @JsonValue
     public String getDescricao() {
         return descricao;
     }

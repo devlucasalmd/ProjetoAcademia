@@ -1,5 +1,7 @@
 package com.br.projetoacademia.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum TipoPagamento {
 	
     PIX("PIX"),
@@ -12,7 +14,8 @@ public enum TipoPagamento {
     private TipoPagamento(String descricao) {
         this.descricao = descricao;
     }
-
+    
+    @JsonValue
     public String getDescricao() {
         return descricao;
     }

@@ -1,11 +1,13 @@
 package com.br.projetoacademia.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum StatusMatricula {
 
     ATIVA("Ativa"),
-    INATIVA("Inativa"),
     CANCELADA("Cancelada"),
-    PENDENTE("Pendente");
+    PENDENTE("Pendente"),
+	EXPIRADA("Expirada");
 
     private final String descricao;
 
@@ -13,6 +15,7 @@ public enum StatusMatricula {
         this.descricao = descricao;
     }
 
+    @JsonValue
     public String getDescricao() {
         return descricao;
     }

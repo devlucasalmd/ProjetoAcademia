@@ -1,7 +1,6 @@
 package com.br.projetoacademia.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
