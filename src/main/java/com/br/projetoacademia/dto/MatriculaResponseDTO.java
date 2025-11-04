@@ -21,13 +21,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MatriculaResponseDTO {
 
-		private Long id;
-		private LocalDate dataInicioMatricula;
-		private LocalDate dataFimMatricula;
-		private StatusMatricula status;
-		private AlunoResponseDTO aluno;
-	    private PlanoResponseDTO plano;
-	    private List<PagamentoResponseDTO> pagamentos;
-		private LocalDateTime dataCriacao;
-		private LocalDateTime dataAtualizacao;
+	private Long id;
+	private LocalDate dataInicioMatricula;
+	private LocalDate dataFimMatricula;
+	private StatusMatricula status;
+	private AlunoResponseDTO aluno;
+	private PlanoResponseDTO plano;
+	private List<PagamentoResponseDTO> pagamentos;
+	private LocalDateTime dataCriacao;
+	private LocalDateTime dataAtualizacao;
 }

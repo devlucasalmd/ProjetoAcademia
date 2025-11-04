@@ -8,11 +8,11 @@ public enum Genero {
 	PREFIRO_NAO_DIZER("Prefiro não dizer");
 
 	private final String descricao;
-	
+
 	private Genero(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}

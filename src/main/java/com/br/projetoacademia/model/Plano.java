@@ -32,24 +32,24 @@ import lombok.Setter;
 public class Plano {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(name = "nome_plano", nullable = false, length = 50)
 	private String nomePlano;
-	
+
 	@NotNull
-    @Column(name = "valor_plano", nullable = false, precision = 10, scale = 2)
+	@Column(name = "valor_plano", nullable = false, precision = 10, scale = 2)
 	private BigDecimal valorPlano;
-	
+
 	@NotNull
-    @Column(name = "duracao_dias", nullable = false)
+	@Column(name = "duracao_dias", nullable = false)
 	private Integer duracaoDias;
-	
-    @Column(length = 255)
+
+	@Column(length = 255)
 	private String descricao;	
-	
-    @OneToMany(mappedBy = "plano", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Matricula> matriculas = new HashSet<>();
+
+	@OneToMany(mappedBy = "plano", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Matricula> matriculas = new HashSet<>();
 }

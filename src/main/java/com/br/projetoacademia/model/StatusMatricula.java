@@ -4,19 +4,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum StatusMatricula {
 
-    ATIVA("Ativa"),
-    CANCELADA("Cancelada"),
-    PENDENTE("Pendente"),
+	ATIVA("Ativa"),
+	CANCELADA("Cancelada"),
+	PENDENTE("Pendente"),
 	EXPIRADA("Expirada");
 
-    private final String descricao;
+	private final String descricao;
 
-    private StatusMatricula(String descricao) {
-        this.descricao = descricao;
-    }
+	private StatusMatricula(String descricao) {
+		this.descricao = descricao;
+	}
 
-    @JsonValue
-    public String getDescricao() {
-        return descricao;
-    }
+	@JsonValue
+	public String getDescricao() {
+		return descricao;
+	}
 }

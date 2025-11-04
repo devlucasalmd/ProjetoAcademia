@@ -31,28 +31,28 @@ import lombok.Setter;
 public class Pagamento {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull	
-    private Double valorPago;
-    
-	@NotNull
-	@Enumerated(EnumType.STRING)
-    @Column(name = "tipo_pagamento", nullable = false, length = 20)
-    private TipoPagamento tipoPagamento;
+	private Double valorPago;
 
 	@NotNull
-    @Column(name = "data_pagamento", nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo_pagamento", nullable = false, length = 20)
+	private TipoPagamento tipoPagamento;
+
+	@NotNull
+	@Column(name = "data_pagamento", nullable = false)
 	private LocalDate dataPagamento;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status_pagamento", nullable = false, length = 20)
 	private StatusPagamento statusPagamento;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "matricula_id", nullable = false)
+	@JoinColumn(name = "matricula_id", nullable = false)
 	private Matricula matricula;
-	
+
 }

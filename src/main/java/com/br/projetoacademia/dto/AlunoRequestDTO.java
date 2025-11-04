@@ -22,31 +22,31 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AlunoRequestDTO {
 
-    @NotBlank(message = "O nome é obrigatório")
-    @Size(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres")
-    private String nome;
+	@NotBlank(message = "O nome é obrigatório")
+	@Size(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres")
+	private String nome;
 
-    @NotBlank(message = "O email é obrigatório")
-    @Email(message = "Email inválido")
-    private String email;
+	@NotBlank(message = "O email é obrigatório")
+	@Email(message = "Email inválido")
+	private String email;
 
-    @NotBlank(message = "A senha é obrigatória")
-    @Size(min = 8, max = 16, message = "A senha deve ter entre 8 e 16 caracteres")
-    private String senha;
+	@NotBlank(message = "A senha é obrigatória")
+	@Size(min = 8, max = 16, message = "A senha deve ter entre 8 e 16 caracteres")
+	private String senha;
 
-    @NotBlank(message = "O CPF é obrigatório")
-//    @CPF
-    private String cpf;
+	@NotBlank(message = "O CPF é obrigatório")
+	//    @CPF
+	private String cpf;
 
-    @NotNull(message = "A data de nascimento é obrigatória")
-    private LocalDate dataNascimento;
+	@NotNull(message = "A data de nascimento é obrigatória")
+	private LocalDate dataNascimento;
 
-    @NotBlank(message = "O telefone é obrigatório")
-    private String telefone;
+	@NotBlank(message = "O telefone é obrigatório")
+	private String telefone;
 
-    @NotNull(message = "O status ativo é obrigatório")
-    private Boolean ativo;
+	@NotNull(message = "O status ativo é obrigatório")
+	private Boolean ativo;
 
-    @NotNull(message = "O gênero é obrigatório")
-    private Genero genero;
+	@NotNull(message = "O gênero é obrigatório")
+	private Genero genero;
 }

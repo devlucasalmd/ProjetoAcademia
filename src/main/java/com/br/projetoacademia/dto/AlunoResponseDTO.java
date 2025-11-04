@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AlunoResponseDTO {
 
-    private Long id;
-    private String nome;
-    private String email;
-    private String cpf;
-    private LocalDate dataNascimento;
-    private String telefone;
-    private Boolean ativo;
-    private Genero genero;
+	private Long id;
+	private String nome;
+	private String email;
+	private String cpf;
+	private LocalDate dataNascimento;
+	private String telefone;
+	private Boolean ativo;
+	private Genero genero;
 }

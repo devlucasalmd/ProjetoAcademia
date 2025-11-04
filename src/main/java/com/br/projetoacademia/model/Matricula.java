@@ -1,4 +1,4 @@
-	package com.br.projetoacademia.model;
+package com.br.projetoacademia.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,45 +37,45 @@ public class Matricula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Column(name = "data_inicio", nullable = false)
 	private LocalDate dataInicioMatricula;
-	
+
 	@NotNull
 	@Column(name = "data_fim", nullable = false)
 	private LocalDate dataFimMatricula;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20, nullable = false)
 	private StatusMatricula status;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "aluno_id", nullable = false)
 	private Aluno aluno;
-	
+
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "plano_id", nullable = false)
 	private Plano plano;
-	
+
 	@OneToMany(mappedBy = "matricula", fetch = FetchType.LAZY)
 	private List<Pagamento> pagamentos;
-	
-    @Column(name = "data_criacao", updatable = false)
-	private LocalDateTime dataCriacao;
-    
-    @Column(name = "data_atualizacao")
-	private LocalDateTime dataAtualizacao;
-	
-    @PrePersist
-    public void prePersist() {
-        this.dataCriacao = LocalDateTime.now();
-    }
 
-    @PreUpdate
-    public void preUpdate() {
-        this.dataAtualizacao = LocalDateTime.now();
-    }
-    
+	@Column(name = "data_criacao", updatable = false)
+	private LocalDateTime dataCriacao;
+
+	@Column(name = "data_atualizacao")
+	private LocalDateTime dataAtualizacao;
+
+	@PrePersist
+	public void prePersist() {
+		this.dataCriacao = LocalDateTime.now();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		this.dataAtualizacao = LocalDateTime.now();
+	}
+
 }

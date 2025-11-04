@@ -29,28 +29,28 @@ public class AlunoController {
 	public AlunoController(AlunoService alunoService) {
 		this.alunoService = alunoService;	
 	}
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public AlunoResponseDTO createAluno(@Valid @RequestBody AlunoRequestDTO alunoRequest) { 
 		return alunoService.criarAluno(alunoRequest); 
 	}
-	
+
 	@GetMapping
 	public List<AlunoResponseDTO> findAllAluno(){ 
 		return alunoService.listarAlunos(); 
 	}
-	
+
 	@GetMapping("/{id}")
 	public AlunoResponseDTO findByIdAluno(@PathVariable Long id) { 
 		return alunoService.buscarPorId(id);	
 	}
-	
+
 	@PutMapping("/{id}")
 	public AlunoResponseDTO updateAluno(@PathVariable Long id, @Valid @RequestBody AlunoRequestDTO alunoRequest){
 		return alunoService.atualizarAluno(id, alunoRequest);	
 	}
-		
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deactivateAluno(@PathVariable Long id) { 
