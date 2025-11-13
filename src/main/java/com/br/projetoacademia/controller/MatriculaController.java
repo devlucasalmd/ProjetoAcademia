@@ -53,9 +53,9 @@ public class MatriculaController {
 		return matriculaService.atualizarMatricula(id, matriculaRequest);
 	}	
 
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deactivateMatricula(@PathVariable Long id) { 
-		matriculaService.desativarMatricula(id); 
-	}
+//	@DeleteMapping("/{id}")
+//	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public void deactivateMatricula(@PathVariable Long id) { 
+//		matriculaService.desativarMatricula(id); 
+//	}
 }

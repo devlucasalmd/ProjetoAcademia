@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "alunos")
+@Table(name = "aluno")
 public class Aluno {
 
 	@Id
